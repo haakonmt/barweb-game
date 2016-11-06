@@ -18,4 +18,6 @@ public class Cup extends Texture {
     }
 
     private int x, y;
+
+    public static final float WIDTH = 20, HEIGHT = 30;
 }

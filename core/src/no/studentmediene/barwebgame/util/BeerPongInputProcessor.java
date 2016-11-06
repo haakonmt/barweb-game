@@ -9,12 +9,20 @@ import com.badlogic.gdx.InputProcessor;
  */
 public class BeerPongInputProcessor implements InputProcessor {
 
-    public boolean ballMoving, throwing, spacePressed, powerRising = true;
+    public boolean ballMoving, throwing,
+            spacePressed, upPressed, downPressed, powerRising = true;
+    public double currentAngle = 45;
 
     @Override
     public boolean keyDown(int keycode) {
         if (keycode == Input.Keys.SPACE && !ballMoving && !throwing) {
             spacePressed = true;
+        }
+        else if (keycode == Input.Keys.UP) {
+            upPressed = true;
+        }
+        else if (keycode == Input.Keys.DOWN) {
+            downPressed = true;
         }
         return true;
     }
@@ -25,6 +33,12 @@ public class BeerPongInputProcessor implements InputProcessor {
             spacePressed = false;
             throwing = true;
             powerRising = true;
+        }
+        else if (keycode == Input.Keys.UP) {
+            upPressed = false;
+        }
+        else if (keycode == Input.Keys.DOWN) {
+            downPressed = false;
         }
         return true;
     }
